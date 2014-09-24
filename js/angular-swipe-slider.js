@@ -5,18 +5,24 @@
 */
 angular.module('swipeSlider', ['ngTouch']).
 
-directive('swipeSlider', ['$swipe', function($swipe){
+directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 	return {
 		scope:{
 			ngModel: '='
 		},
 		controller: function($scope, $element, $attrs, $transclude) {
-
+			/*
+				图片数据[{
+                    link: '###',
+                    src: 'http://007.cnweiyan.com/shop/images/szx-banner.jpg'
+                }]
+			*/
 			$scope.images = $scope.ngModel;
-
+			//当前显示图片的索引值
 			$scope.swipe = { index: 0 };
 
-			$scope.swipeLeft = function(){
+			//左滑动
+			this.swipeLeft = function(){
 				if($scope.swipe.index != $scope.images.length - 1){
 					$scope.swipe.index++
 				}
@@ -24,7 +30,8 @@ directive('swipeSlider', ['$swipe', function($swipe){
 					$scope.swipe.index = $scope.images.length - 1;
 				}
 			}
-			$scope.swipeRight = function(){
+			//右滑动
+			this.swipeRight = function(){
 				if($scope.swipe.index != 0){
 					$scope.swipe.index--;
 				}
@@ -32,11 +39,29 @@ directive('swipeSlider', ['$swipe', function($swipe){
 					$scope.swipe.index = 0;
 				}
 			}
-			$scope.show = 123
+			//取消自动播放
+			$scope.cancel = function(){
+				this.timer && ($interval.cancel(this.timer));
+			}
+			//自动播放
+			$scope.open = function(){
+				if( $attrs.autoplay > 1000 ){
+					this.timer = $interval(function(){
+						if($scope.swipe.index == $scope.images.length - 1){
+							$scope.swipe.index = 0;
+						}
+						else{
+							$scope.swipe.index++
+						}
+					}, Math.abs($attrs.autoplay));
+				}
+			}
+			//尝试自动播放
+			$scope.open();
 		},
 		restrict: 'AE',
 		template: '\
-			<div class="swipe-slider" ng-show="true">\
+			<div class="swipe-slider" ng-mouseenter="cancel()" ng-mouseleave="open()">\
 		        <div class="swipe-list" ng-style="{left: -swipe.index*100+\'%\'}">\
 		            <a ng-href="{{i.link}}" class="item" ng-repeat="i in images">\
 		                <img draggable="false" ng-src="{{i.src}}" alt="" width="100%" height=300>\
@@ -46,20 +71,29 @@ directive('swipeSlider', ['$swipe', function($swipe){
 		            <li class="item" ng-class="{active: $index===swipe.index}" ng-repeat="i in images" ng-click="swipe.index=$index">\
 		            </li>\
 		        </ul>\
+		        <div  ng-transclude></div>\
 		    </div>',
 		replace: true,
+		transclude: true,
 		link: function($scope, $element, iAttrs, controller) {
 			var transition;
-			
+
+			//记录css设置的transition动画
 			if(controller.$swipeList[0].currentStyle){
 				transition = controller.$swipeList[0].currentStyle['transition'];
 			}
 			else{
 				transition = getComputedStyle(controller.$swipeList[0], false)['transition'];
 			}
-
+			/*
+				实现拖拽效果 在end事件结束时候会根据滑动方向调用滑动方法
+			*/
 			$swipe.bind($element, {
 				start: function(currentPoint, ev){
+					ev.preventDefault();
+					//尝试关闭自动播放
+					$scope.cancel();
+
 					currentPoint.offsetLeft = controller.$swipeList[0].offsetLeft;
 
 					$element.prop('currentPoint', currentPoint);
@@ -75,7 +109,7 @@ directive('swipeSlider', ['$swipe', function($swipe){
 					});
 				},
 				end: function(currentPoint){
-					
+					//恢复css transition
 					controller.$swipeList.css('transition', transition);
 
 					var prevPoint = $element.prop('currentPoint');
@@ -84,7 +118,7 @@ directive('swipeSlider', ['$swipe', function($swipe){
 
 					//左滑动
 					if(dx<0 && Math.abs(dx) >= 100 ){
-						$scope.$apply($scope.swipeLeft);
+						$scope.$apply(controller.swipeLeft);
 					}
 					//左滑动没有成功
 					else{
@@ -93,12 +127,14 @@ directive('swipeSlider', ['$swipe', function($swipe){
 
 					//右滑动
 					if(dx>0 && Math.abs(dx) >= 100 ){
-						$scope.$apply($scope.swipeRight);
+						$scope.$apply(controller.swipeRight);
 					}
 					//右滑动没有成功
 					else{
 						ha();
 					}
+					//尝试打开自动播放
+					//controller.open();
 
 					function ha(){
 						$scope.$apply(function(){
@@ -122,4 +158,4 @@ directive('swipeList',function(){
 			controller.$swipeList = $element;
 		}
 	};
-})
+});

@@ -3,21 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Examples</title>
+<title>angular swipe slider for HTML5</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/swipe-slider.css">
-<script>
-    
-</script>
 <style>
 </style>
 </head>
 <body id="ng-app" ng-controller="swipeSliderCtrl">
-    <div swipe-slider ng-model="images"></div>
-    <button id="btn">click</button>
+    <swipe-slider ng-model="images" autoplay="0"></swipe-slider>
+
+    <button id="btn" class="block mlra mt10" style="width:-webkit-fit-content; width:fit-content;">click add image</button>
+
     <script src="js/angular.min.js"></script>
     <script src="js/angular-touch.min.js"></script>
     <script src="js/angular-swipe-slider.js"></script>
@@ -41,12 +40,9 @@
             ];
 
             document.getElementById('btn').onclick = function(){
-                $scope.images.push(
-                    {
-                        link: '###',
-                        src: 'images/2.png'
-                    }
-                )
+                var rd = $scope.images[ Math.random()*3|0 ];
+
+                $scope.images.push( angular.copy(rd) );
                 $scope.$apply();
             }
         });
