@@ -1,3 +1,7 @@
 使用文档
 =============
-> This is the first level of quoting.
+> 如何使用
+	1.
+		<script src="js/angular.min.js"></script>
+	    <script src="js/angular-touch.min.js"></script>
+	    <script src="js/angular-swipe-slider.js"></script>
