@@ -1,7 +1,7 @@
 使用文档
 =============
 > 如何使用
-	1.
-		<script src="js/angular.min.js"></script>
-	    <script src="js/angular-touch.min.js"></script>
-	    <script src="js/angular-swipe-slider.js"></script>
+1.
+	<script src="js/angular.min.js"></script>
+    <script src="js/angular-touch.min.js"></script>
+    <script src="js/angular-swipe-slider.js"></script>
