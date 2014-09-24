@@ -2,8 +2,7 @@
 =============
 > 如何使用
 >
-    <pre>
-		<script src="js/angular.min.js"></script>
-	    <script src="js/angular-touch.min.js"></script>
-	    <script src="js/angular-swipe-slider.js"></script>
-    </pre>
+##需要的js:##
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-touch.min.js"></script>
+	<script src="js/angular-swipe-slider.js"></script>
