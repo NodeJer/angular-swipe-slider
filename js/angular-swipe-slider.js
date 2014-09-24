@@ -91,8 +91,6 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 			$swipe.bind($element, {
 				start: function(currentPoint, ev){
 					ev.preventDefault();
-					//尝试关闭自动播放
-					$scope.cancel();
 
 					currentPoint.offsetLeft = controller.$swipeList[0].offsetLeft;
 
@@ -133,8 +131,6 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 					else{
 						ha();
 					}
-					//尝试打开自动播放
-					//controller.open();
 
 					function ha(){
 						$scope.$apply(function(){
