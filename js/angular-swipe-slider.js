@@ -1,3 +1,4 @@
+
 /**
 *swipeSlider  Module
 *
@@ -8,7 +9,8 @@ angular.module('swipeSlider', ['ngTouch']).
 directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 	return {
 		scope:{
-			ngModel: '='
+			ngModel: '=',
+			controls: '='
 		},
 		controller: function($scope, $element, $attrs, $transclude) {
 			/*
@@ -22,7 +24,7 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 			$scope.swipe = { index: 0 };
 
 			//左滑动
-			this.swipeLeft = function(){
+			$scope.swipeLeft = function(){
 				if($scope.swipe.index != $scope.images.length - 1){
 					$scope.swipe.index++
 				}
@@ -31,7 +33,7 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 				}
 			}
 			//右滑动
-			this.swipeRight = function(){
+			$scope.swipeRight = function(){
 				if($scope.swipe.index != 0){
 					$scope.swipe.index--;
 				}
@@ -71,6 +73,8 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 		            <li class="item" ng-class="{active: $index===swipe.index}" ng-repeat="i in images" ng-click="swipe.index=$index">\
 		            </li>\
 		        </ul>\
+				<a class="prev" ng-show="controls && swipe.index!==0" ng-click="swipeRight()"></a>\
+				<a class="next" ng-hide="!controls || swipe.index===images.length-1" ng-click="swipeLeft()"></a>\
 		        <div  ng-transclude></div>\
 		    </div>',
 		replace: true,
@@ -116,7 +120,7 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 
 					//左滑动
 					if(dx<0 && Math.abs(dx) >= 100 ){
-						$scope.$apply(controller.swipeLeft);
+						$scope.$apply($scope.swipeLeft);
 					}
 					//左滑动没有成功
 					else{
@@ -125,7 +129,7 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 
 					//右滑动
 					if(dx>0 && Math.abs(dx) >= 100 ){
-						$scope.$apply(controller.swipeRight);
+						$scope.$apply($scope.swipeRight);
 					}
 					//右滑动没有成功
 					else{
@@ -154,4 +158,4 @@ directive('swipeList',function(){
 			controller.$swipeList = $element;
 		}
 	};
-});
+})

@@ -38,3 +38,24 @@
 	background-image: -o-linear-gradient(top,#1293dc,#0f6297);
 	background-image: linear-gradient(top,#1293dc,#0f6297);
 }
+
+.swipe-slider .prev,
+.swipe-slider .next{
+	position: absolute; top: 50%; left: 25px;
+	margin-top: -12px;
+	width: 24px; height: 24px;
+	border: 5px solid #fff;
+	opacity: .8;
+	cursor: pointer;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.swipe-slider .prev{
+	border-right: none;
+	border-top: none;
+}
+.swipe-slider .next{
+	left: auto; right: 25px;
+	border-bottom: none;
+	border-left: none;
+}
