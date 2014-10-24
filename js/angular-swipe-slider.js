@@ -66,7 +66,7 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 			<div class="swipe-slider" ng-mouseenter="cancel()" ng-mouseleave="open()">\
 		        <div class="swipe-list" ng-style="{left: -swipe.index*100+\'%\'}">\
 		            <a ng-href="{{i.link}}" class="item" ng-repeat="i in images">\
-		                <img draggable="false" ng-src="{{i.src}}" alt="" width="100%" height=300>\
+		                <img draggable="false" ng-src="{{i.src}}" alt="" width="100%">\
 		            </a>\
 		        </div>\
 		        <ul class="btn-list">\
