@@ -79,7 +79,7 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 		    </div>',
 		replace: true,
 		transclude: true,
-		link: function($scope, $element, iAttrs, controller) {
+		link: function($scope, $element, $attrs, controller) {
 			var transition;
 
 			//记录css设置的transition动画
@@ -92,6 +92,8 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 			/*
 				实现拖拽效果 在end事件结束时候会根据滑动方向调用滑动方法
 			*/
+			if(!$attrs.swipe)return;
+			
 			$swipe.bind($element, {
 				start: function(currentPoint, ev){
 					ev.preventDefault();
