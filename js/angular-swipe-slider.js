@@ -92,7 +92,7 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 			/*
 				实现拖拽效果 在end事件结束时候会根据滑动方向调用滑动方法
 			*/
-			if($attrs.swipe == false)return;
+			if($attrs.swipe == 'false')return;
 
 			$swipe.bind($element, {
 				start: function(currentPoint, ev){
