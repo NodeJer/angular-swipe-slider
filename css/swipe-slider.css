@@ -49,7 +49,7 @@
 	cursor: pointer;
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
-	background-color: #c00;
+	background-color: none;
 }
 .swipe-slider .prev{
 	border-right-color: transparent;
