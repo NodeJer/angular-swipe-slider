@@ -52,11 +52,11 @@
 	background-color: transparent;
 }
 .swipe-slider .prev{
-	border-right: none;
-	border-top: none;
+	border-right-color: transparent;
+	border-top-color: transparent;
 }
 .swipe-slider .next{
 	left: auto; right: 25px;
-	border-bottom: none;
-	border-left: none;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
 }
