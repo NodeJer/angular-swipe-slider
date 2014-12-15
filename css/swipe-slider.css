@@ -50,7 +50,7 @@
 	cursor: pointer;
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
-	filter:progid:DXImageTransform.Microsoft.Matrix(M11=-0.707,M12=-0.707,M21=0.707,M22=-0.707,SizingMethod='auto expand');
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474, M12=-0.7071067811865477, M21=0.7071067811865477, M22=0.7071067811865474, SizingMethod='auto expand')";
 	background-color: transparent;
 	overflow: hidden;
 }
