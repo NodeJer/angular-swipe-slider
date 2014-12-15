@@ -16,7 +16,7 @@
 
 ##使用非常简单：
 ```html
-    <swipe-slider ng-model="images" autoplay="0"></swipe-slider>
+    <swipe-slider ng-model="images" autoplay="0" controls="true" swipe="true"></swipe-slider>
 
     <button id="btn" class="block mlra mt10" style="width:-webkit-fit-content; width:fit-content;">click add image</button>
 ```
@@ -52,5 +52,8 @@
     </script>
 ```
 
-#####$scope.image是数据模型 你如果想自动播放可以加一句autoplay="3000" 3秒走一次
+#####ng-model="images" $scope.image是数据模型
+#####你如果想自动播放可以加一句autoplay="3000" 3秒走一次
+#####如果你想禁止滑动设置swipe="false"
+#####如果你想隐藏控制箭头可以设置  controls="true"
    
