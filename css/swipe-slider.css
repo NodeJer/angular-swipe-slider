@@ -41,6 +41,7 @@
 
 .swipe-slider .prev,
 .swipe-slider .next{
+	display: block;
 	position: absolute; top: 50%; left: 25px;
 	margin-top: -12px;
 	width: 24px; height: 24px;
