@@ -75,7 +75,7 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 		        </ul>\
 				<img src="http://res.mfs.ykimg.com/0510000051AD63E96714C04A1400547A" class="prev" ng-show="controls && swipe.index!==0" ng-click="swipeRight()">\
 				<img src="http://res.mfs.ykimg.com/0510000051AD63F56714C04A1305CFEF" class="next" ng-hide="!controls || swipe.index===images.length-1" ng-click="swipeLeft()">\
-		        <div ng-transclude></div>\
+		       
 		    </div>',
 		replace: true,
 		transclude: true,
