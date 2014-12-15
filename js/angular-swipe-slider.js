@@ -73,8 +73,8 @@ directive('swipeSlider', ['$swipe', '$interval', function($swipe, $interval){
 		            <li class="item" ng-class="{active: $index===swipe.index}" ng-repeat="i in images" ng-click="swipe.index=$index">\
 		            </li>\
 		        </ul>\
-				<div class="prev" ng-show="controls && swipe.index!==0" ng-click="swipeRight()"></div>\
-				<div class="next" ng-hide="!controls || swipe.index===images.length-1" ng-click="swipeLeft()"></div>\
+				<div class="prev" ng-show="controls && swipe.index!==0" ng-click="swipeRight()"> </div>\
+				<div class="next" ng-hide="!controls || swipe.index===images.length-1" ng-click="swipeLeft()"> </div>\
 		        <div ng-transclude></div>\
 		    </div>',
 		replace: true,
