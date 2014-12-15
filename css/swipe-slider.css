@@ -5,12 +5,10 @@
 }
 .swipe-slider .swipe-list{
 	position: relative; left: 0;
-	min-height: 160px;
 	white-space: nowrap;
-	font-size: 0;
+	font-size: 0; line-height: 0;
 	-webkit-transition: left .3s;
 	transition: left .3s;
-	overflow: hidden;
 }
 .swipe-slider .swipe-list .item{
 	display: inline-block;
