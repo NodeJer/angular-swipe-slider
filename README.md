@@ -28,15 +28,15 @@
             $scope.images = [
                 {
                     link: '###',
-                    src: 'http://007.cnweiyan.com/shop/images/szx-banner.jpg'
+                    src: 'http://www.w3cfuns.com/data/attachment/cmplugin/W3Cfuns_Adv/portal/index/focus/201412/22/142440dy2rb2bzkw2boblk.jpg'
                 },
                 {
                     link: '###',
-                    src: 'http://007.cnweiyan.com/shop/images/ph097.jpg'
+                    src: 'http://www.w3cfuns.com/data/attachment/cmplugin/W3Cfuns_Adv/portal/index/focus/201412/30/173456gagqrgl5qal2e5xx.jpg'
                 },
                 {
                     link: '###',
-                    src: 'http://007.cnweiyan.com/shop/images/center-banner1.jpg'
+                    src: 'http://www.w3cfuns.com/data/attachment/cmplugin/W3Cfuns_Adv/portal/index/focus/201412/26/171018mxa3zbe8q6bzjvkw.jpg'
                 }
             ];
 
@@ -55,5 +55,5 @@
 #####ng-model="images" $scope.image是数据模型
 #####你如果想自动播放可以加一句autoplay="3000" 3秒走一次
 #####如果你想禁止滑动设置swipe="false"
-#####如果你想隐藏控制箭头可以设置  controls="true"
+#####如果你想显示隐藏控制箭头可以设置  controls="true"
    
