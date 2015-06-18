@@ -6,6 +6,7 @@
 	white-space: nowrap;
 	font-size: 0; line-height: 0;
 	transform: translate(-100px)!important;
+	-webkit-transform: translate(-100px)!important;
 	-webkit-transition: left .3s, transform .3s;
 	transition: left .3s, transform .3s;
 }
