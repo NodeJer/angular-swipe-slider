@@ -145,7 +145,7 @@
 
                             //左滑动
                             else if (dx < 0) {
-                                if (Math.abs(dx) >= 100) {
+                                if (Math.abs(dx) >= 66) {
                                     num = 1;
 
                                 } else {
@@ -154,7 +154,7 @@
                             }
                             //右滑动
                             else if (dx > 0) {
-                                if (Math.abs(dx) >= 100) {
+                                if (Math.abs(dx) >= 66) {
                                     num = -1;
                                 } else {
                                     reset();

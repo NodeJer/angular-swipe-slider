@@ -5,9 +5,9 @@
 .ng-slider .ng-slider-list{
 	white-space: nowrap;
 	font-size: 0; line-height: 0;
-	-webkit-transition: left .5s, -webkit-transform .5s;
-	-moz-transition: left .5s, -moz-transform .5s;
-	transition: left .5s, transform .5s;
+	-webkit-transition: left .3s linear, -webkit-transform .3s linear;
+	-moz-transition: left .3s linear, -moz-transform .3s linear;
+	transition: left .3s linear, transform .3s linear;
 }
 .ng-slider .ng-slider-list .item{
 	display: inline-block;
