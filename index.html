@@ -8,45 +8,23 @@
 <meta name="keywords" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/swipe-slider.css">
+<link rel="stylesheet" href="css/slider.css">
 <style>
 </style>
 </head>
-<body id="ng-app" ng-controller="swipeSliderCtrl">
-    <swipe-slider ng-model="images" autoplay="0" controls="true" swipe="true">
-
-    </swipe-slider>
-    <button id="btn" class="block mlra mt10" style="width:-webkit-fit-content; width:fit-content;">click add image</button>
+<body id="ng-app">
+   
+    <slider autoplay="2000">
+        <slider-pane><img src="images/1.jpg" width="100%"></slider-pane>
+        <slider-pane><img src="images/2.jpg" width="100%"></slider-pane>
+        <slider-pane><img src="images/3.jpg" width="100%"></slider-pane>
+    </slider>
 
     <script src="js/angular.min.js"></script>
     <script src="js/angular-touch.min.js"></script>
-    <script src="js/angular-swipe-slider.js"></script>
+    <script src="js/angular-slider.js"></script>
     <script>
-    	angular.module('app', ['swipeSlider']).
-
-        controller('swipeSliderCtrl', function($scope){
-            $scope.images = [
-                {
-                    link: '###',
-                    src: 'http://www.w3cfuns.com/data/attachment/cmplugin/W3Cfuns_Adv/portal/index/focus/201412/22/142440dy2rb2bzkw2boblk.jpg'
-                },
-                {
-                    link: '###',
-                    src: 'http://www.w3cfuns.com/data/attachment/cmplugin/W3Cfuns_Adv/portal/index/focus/201412/30/173456gagqrgl5qal2e5xx.jpg'
-                },
-                {
-                    link: '###',
-                    src: 'http://www.w3cfuns.com/data/attachment/cmplugin/W3Cfuns_Adv/portal/index/focus/201412/26/171018mxa3zbe8q6bzjvkw.jpg'
-                }
-            ];
-
-            document.getElementById('btn').onclick = function(){
-                var rd = $scope.images[ Math.random()*3|0 ];
-
-                $scope.images.push( angular.copy(rd) );
-                $scope.$apply();
-            }
-        });
+    	var app = angular.module('app', ['slider']);
 
     	angular.bootstrap(document.body, ['app']);
     </script>
