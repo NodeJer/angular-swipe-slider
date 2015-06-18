@@ -12,6 +12,7 @@
         this.isMobile = function (){
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);   
         }
+        alert(this.isMobile());
         this.getTemplate = function(){
             return '<div class="ng-slider" ng-mouseenter="cancel()" ng-mouseleave="open()">\
                         <div class="ng-slider-list" ng-transclude ng-style="moveStyle"></div>\
