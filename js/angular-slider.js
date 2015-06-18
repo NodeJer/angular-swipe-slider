@@ -126,6 +126,8 @@
                             translate = list.style.webkitTransform.match(/-\d+|\d+/)[0] | 0;
 
                             list.style.transition = 'none';
+
+                            ev.preventDefault();
                         },
                         move: function(currentPoint, ev) {
 

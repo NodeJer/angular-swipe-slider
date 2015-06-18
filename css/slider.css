@@ -6,6 +6,7 @@
 	white-space: nowrap;
 	font-size: 0; line-height: 0;
 	-webkit-transition: left .2s linear, -webkit-transform .2s linear;
+	-webkit-transition: left .2s linear, transform .2s linear;
 	-moz-transition: left .2s linear, -moz-transform .2s linear;
 	transition: left .2s linear, transform .2s linear;
 }
