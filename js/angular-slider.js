@@ -30,7 +30,7 @@
                     var self = this;
                     var panes = $scope.panes = [];
                     var timer = null;
-                    var style = $scope.style =  {};
+                    var style = $scope.style = {};
 
                     $scope.select = function(pane, swipe) {
                         if($slider.isMobile() && !swipe)return;
@@ -41,7 +41,7 @@
                             style.left = x;
                             style.position = 'relative';
                         } else {
-                            style.transform = 'translate(' + x + ')';
+                            style.webkitTransform = 'translate(' + x + ')';
                         }
 
                         $scope.selectedPane = pane;
@@ -122,7 +122,7 @@
                         start: function(currentPoint, ev) {
 
                             prevPoint = currentPoint;
-                            translate = list.style.transform.match(/-\d+|\d+/)[0] | 0;
+                            translate = list.style.webkitTransform.match(/-\d+|\d+/)[0] | 0;
 
                             list.style.transition = 'none';
                         },
@@ -130,7 +130,7 @@
 
                             var l = (currentPoint.x - prevPoint.x + translate) + 'px';
 
-                            list.style.transform = 'translate(' + l + ')';
+                            list.style.webkitTransform = 'translate(' + l + ')';
 
                             ev.preventDefault();
                         },
@@ -169,7 +169,7 @@
                     });
 
                     function reset(){
-                        list.style.transform = $scope.style.transform;
+                        list.style.webkitTransform = $scope.style.webkitTransform;
                     }
                 }
             };
