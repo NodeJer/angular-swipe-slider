@@ -120,6 +120,7 @@
 
                     $swipe.bind($element, {
                         start: function(currentPoint, ev) {
+                            $scope.cancel();
 
                             prevPoint = currentPoint;
                             translate = list.style.webkitTransform.match(/-\d+|\d+/)[0] | 0;
@@ -165,6 +166,8 @@
                                    reset();
                                 }
                             });
+
+                            $scope.open();
                         }
                     });
 
