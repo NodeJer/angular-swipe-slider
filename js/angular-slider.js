@@ -12,10 +12,9 @@
         this.isMobile = function (){
             return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);   
         }
-        alert(this.isMobile());
         this.getTemplate = function(){
             return '<div class="ng-slider" ng-mouseenter="cancel()" ng-mouseleave="open()">\
-                        <div class="ng-slider-list" ng-transclude ng-style="moveStyle"></div>\
+                        <div class="ng-slider-list" ng-transclude ng-style="style"></div>\
                         <ul class="ng-slider-btn-list" ng-if="panes.length > 1">\
                             <li class="item" ng-class="{active: selectedPane===o}" ng-click="select(o)" ng-repeat="o in panes"></li>\
                         </ul>\
@@ -31,8 +30,7 @@
                     var self = this;
                     var panes = $scope.panes = [];
                     var timer = null;
-
-                    $scope.moveStyle = {};
+                    var style = $scope.style =  {};
 
                     $scope.select = function(pane, swipe) {
                         if($slider.isMobile() && !swipe)return;
@@ -40,11 +38,12 @@
                         var x = -pane.index * $element[0].offsetWidth + 'px';
 
                         if (!$slider.isMobile()) {
-                            $scope.moveStyle.left = x;
-                            $scope.moveStyle.position = 'relative';
+                            style.left = x;
+                            style.position = 'relative';
                         } else {
-                            $scope.moveStyle.transform = 'translate(' + x + ')';
+                            style.transform = 'translate(' + x + ')';
                         }
+
                         $scope.selectedPane = pane;
                     }
 
@@ -170,7 +169,7 @@
                     });
 
                     function reset(){
-                        list.style.transform = $scope.moveStyle.transform;
+                        list.style.transform = $scope.style.transform;
                     }
                 }
             };
