@@ -114,18 +114,19 @@
                     if (!$slider.isMobile() || $scope.panes.length <= 1) return;
 
                     var translate = 0,
-                        list = $element[0].firstElementChild,
+                        list = angular.element($element[0].firstElementChild),
                         prevPoint,
-                        transition = $slider.getStyle(list, 'transition');
+                        transition = $slider.getStyle(list[0], 'transition');
+
+                        
 
                     $swipe.bind($element, {
                         start: function(currentPoint, ev) {
                             $scope.cancel();
-
                             prevPoint = currentPoint;
-                            translate = list.style.webkitTransform.match(/-\d+|\d+/)[0] | 0;
+                            translate = list.css('-webkit-transform').match(/-\d+|\d+/)[0] | 0;
 
-                            list.style.transition = 'none';
+                            list.css({'-webkit-transition-duration': '0s'});
 
                             ev.preventDefault();
                         },
@@ -133,13 +134,10 @@
 
                             var l = (currentPoint.x - prevPoint.x + translate) + 'px';
 
-                            list.style.webkitTransform = 'translate(' + l + ')';
-
-                            ev.preventDefault();
+                            list.css({'-webkit-transform': 'translate(' + l + ')'});
                         },
                         end: function(currentPoint, ev) {
-
-                            list.style.transition = transition;
+                            list.css({'-webkit-transition': transition});
 
                             var dx = currentPoint.x - prevPoint.x;
                             var num;
@@ -174,7 +172,7 @@
                     });
 
                     function reset(){
-                        list.style.webkitTransform = $scope.style.webkitTransform;
+                        list.css({'-webkit-transform': $scope.style.webkitTransform});
                     }
                 }
             };
