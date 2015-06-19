@@ -118,8 +118,6 @@
                         prevPoint,
                         transition = $slider.getStyle(list[0], 'transition');
 
-                        
-
                     $swipe.bind($element, {
                         start: function(currentPoint, ev) {
                             $scope.cancel();
