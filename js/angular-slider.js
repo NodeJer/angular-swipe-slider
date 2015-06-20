@@ -1,5 +1,5 @@
 ﻿(function() {
-    var slider = angular.module('slider', ['ngTouch']);
+    var slider = angular.module('ng.slider', ['ngTouch']);
 
     slider.service('$slider', function(){
         this.getStyle = function(obj, name) {
